@@ -1,4 +1,4 @@
-package com.ship.shipshop5a.security;
+package com.ship.shipshop5a.config.security;
 
 import com.ship.shipshop5a.entity.User;
 import com.ship.shipshop5a.entity.repository.UserRepository;

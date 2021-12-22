@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="add-products" author="alexn">
+        <insert tableName="product">
+            <column name="id" valueComputed="uuid_generate_v4()"/>
+            <column name="name" value="Прокладка В34"/>
+            <column name="count" value="1"/>
+            <column name="price" value="15"/>
+            <column name="category" value="Запчасти"/>
+            <column name="port_delivery" value="Рига"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="add-admin" author="alexn">
+        <modifyDataType tableName="user" columnName="password" newDataType="varchar(128)"/>
+        <insert tableName="user">
+            <column name="id" valueComputed="uuid_generate_v4()"/>
+            <column name="login" value="admin"/>
+            <column name="password" value="$2y$12$rxg3cYnpaZsNwAVuaiKZXeDb69dR.h9foNdfARmOp/9UBRLymKV22"/>
+            <column name="phone" value="123123"/>
+            <column name="role" value="admin"/>
+            <column name="imo" value="1111111"/>
+            <column name="name_ship" value="офис"/>
+
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-order-table" author="alexn">
+        <createTable tableName="order">
+            <column name="id" type="UUID"/>
+            <column name="created_at" type="TIMESTAMP WITH TIMEZONE"/>
+            <column name="delivered_at" type="TIMESTAMP WITH TIMEZONE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="rename-order-table" author="alexn">
+        <renameTable oldTableName="order" newTableName="orders"/>
+    </changeSet>
+
+
+
+
+    <changeSet id="add-email-column" author="alexn">
+        <addColumn tableName="user">
+            <column name="email" type="varchar(128)"/>
+        </addColumn>
+    </changeSet>
+
+
+
+    <changeSet id="alter-table-cart" author="alexn">
+        <addPrimaryKey tableName="orders" columnNames="id"/>
+        <dropColumn tableName="cart" columnName="count"/>
+        <dropColumn tableName="cart" columnName="product_id"/>
+        <addColumn tableName="cart">
+            <column name="products" type="jsonb"/>
+        </addColumn>
+        <addColumn tableName="cart">
+            <column name="order_id" type="UUID">
+                <constraints foreignKeyName="fk_order_id" references="orders(id)"/>
+            </column>
+        </addColumn>
+
+
+    </changeSet>
+
+</databaseChangeLog>

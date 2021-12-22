@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="rename-table" author="alexn">
+        <renameTable oldTableName="card" newTableName="cart"/>
+
+        <sql>
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Масло ВС100',1);
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Масло ВС100',1);
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Прокладка ПК158х45',1);
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Вода питьевая', 1);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Вода питьевая', 1);
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Вода питьевая', 1);
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Аптечка',1);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Аптечка',1);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Зарядное устройство',1);
+            insert into product(id, name, count ) values(uuid_generate_v4(), 'Зарядное устройство',1);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Электростанция',1);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Компрессор',1);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Компрессор',1);
+
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

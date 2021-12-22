@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ship_order5a
+    username: postgres
+    password: 1151647
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+

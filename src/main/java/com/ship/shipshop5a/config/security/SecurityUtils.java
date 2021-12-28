@@ -1,4 +1,4 @@
-package com.ship.shipshop5a.security;
+package com.ship.shipshop5a.config.security;
 
 import com.vaadin.flow.server.HandlerHelper;
 import com.vaadin.flow.shared.ApplicationConstants;
